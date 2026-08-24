@@ -23,8 +23,9 @@
 **[FILL IN: Project Name]** — [FILL IN: one-line description] ([FILL IN: repo/demo link])
 - [FILL IN: what you built, tools used, outcome/impact]
 
-**Diagnosed a config-parsing bug in OpenAI Codex CLI's sandbox permissions system** — [openai/codex#40339](https://github.com/openai/codex/issues/40339)
-- Traced a silently-swallowed schema mismatch (`FilesystemPermissionToml`) causing sandbox misconfiguration on `git`/network operations; filed with reproduction steps
+**Diagnosed and proposed a fix for a config-precedence bug in OpenAI Codex CLI's sandbox permissions system** — [openai/codex#40339](https://github.com/openai/codex/issues/40339)
+- Root-caused a silent failure where documented `[sandbox_workspace_write]` network/filesystem settings are dropped without warning once a named permissions profile is active, breaking `git`/network operations with no diagnostic
+- Wrote and verified a fix (Rust) adding a startup warning for the ignored-config case, with regression tests; posted as a suggested patch per the project's contribution policy
 
 ## Skills
 - **Languages:** [FILL IN]
