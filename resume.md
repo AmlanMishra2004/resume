@@ -27,6 +27,10 @@
 - Root-caused a silent failure where documented `[sandbox_workspace_write]` network/filesystem settings are dropped without warning once a named permissions profile is active, breaking `git`/network operations with no diagnostic
 - Wrote and verified a fix (Rust) adding a startup warning for the ignored-config case, with regression tests; posted as a suggested patch per the project's contribution policy
 
+**Fixed a column-rename compatibility bug in torchxrayvision's NIH_Dataset (mlmed/torchxrayvision)** — [PR #190](https://github.com/mlmed/torchxrayvision/pull/190) (merged)
+- Found that NIH's officially distributed CSV renamed `Patient Gender` to `Patient Sex`, causing a `KeyError` when loading a fresh download into `NIH_Dataset` (library's bundled copy still used the old name)
+- Added column-name normalization so both versions load correctly; added a regression test and verified no regression against the existing bundled CSV
+
 **Added CheXlocalize dataset support to torchxrayvision (mlmed/torchxrayvision)** — [PR #191](https://github.com/mlmed/torchxrayvision/pull/191) (merged)
 - Identified that the library's existing CheXpert loader can't read CheXlocalize's official blinded test set — it assumes demographic columns that are deliberately omitted, and infers train/val split by string-matching the CSV path — confirmed the failure against the real dataset
 - Implemented and tested a new `CheXlocalize_Dataset` class (COCO-RLE segmentation mask support included), verified against the real ~5GB download on a research cluster; opened the required pre-PR issue and PR per the project's contribution process
