@@ -36,6 +36,10 @@
 - Implemented and tested a new `CheXlocalize_Dataset` class (COCO-RLE segmentation mask support included), verified against the real ~5GB download on a research cluster; opened the required pre-PR issue and PR per the project's contribution process
 - After the maintainer reported a load failure on the real validation set, root-caused and fixed a folder-naming mismatch between CheXpert's and CheXlocalize's own releases of the same images, plus a silent bug where segmentation masks for one pathology never attached due to a naming inconsistency in CheXlocalize's own data (cross-checked against the CheXlocalize paper); added a guard against a separate silent-failure mode and regression tests for all of it
 
+**Renamed torchxrayvision's VinBrain_Dataset to VinDr_Dataset (mlmed/torchxrayvision)** — [PR #193](https://github.com/mlmed/torchxrayvision/pull/193) (merged)
+- Fixed a long-standing misnaming (open issue #51): the class loads VinDr-CXR, released by VinBigData, but was named after VinBrain, a different Vingroup company, making the dataset hard to find
+- Renamed the class while keeping `VinBrain_Dataset` as a backward-compatible alias so existing user code keeps working; updated README, Sphinx docs, scripts, and benchmarks, and added an alias regression test
+
 ## Skills
 - **Languages:** [FILL IN]
 - **Tools/Frameworks:** [FILL IN]
